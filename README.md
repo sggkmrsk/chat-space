@@ -1,24 +1,60 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Database design
+## usersテーブル
+  |Column|Type|Options|
+  |------|----|-------|
+  |user_id|integer|null: false, unique: true|
+  |user_name|varchar|null: false|
+  |email_address|varchar|null: false,unique: true|
+  |password|varchar|null: false|
 
-Things you may want to cover:
+  ### Association
+  - has_many :groups_users
+    - has_many :group, though: :groups_users
+  - has_many :massages
 
-* Ruby version
+## groupsテーブル
+  |Column|Type|Options|
+  |------|----|-------|
+  |group_id|integer|null: false, unique: true|
+  |group_name|varchar|null: false|
 
-* System dependencies
+  ### Association
+  - has_many :groups_users
+    - has_many :users, though: :groups_users
+  - has_many :massages
 
-* Configuration
+## groups_usersテーブル
+  |Column|Type|Options|
+  |------|----|-------|
+  |user_id|integer|null: false, foreign_key: true|
+  |group_id|integer|null: false, foreign_key: true|
 
-* Database creation
+  ### Association
+  - belongs_to :group
+  - belongs_to :user
 
-* Database initialization
+## massagesテーブル
+  |Column|Type|Options|
+  |------|----|-------|
+  |massage_id|integer|null: false, unique: true|
+  |body|text|null: false|
+  |group_id|integer|null: false, foreign_key: true|
+  |user_id|integer|null: false, foreign_key: true|
+  |image_id|integer|foreign_key: true|
+  |timestamp|datetime|null: false|
 
-* How to run the test suite
+  ### Association
+  - belongs_to :group
+  - belongs_to :user
+  - mas_many :images
 
-* Services (job queues, cache servers, search engines, etc.)
+## imagesテーブル
+  |Column|Type|Options|
+  |------|----|-------|
+  |image_id|integer|null: false, unique: true|
+  |image_path|varchar|null: false, unique: true|
 
-* Deployment instructions
-
-* ...
+  ### Association
+  - belongs_to :massage

@@ -42,10 +42,9 @@
   |body|text|null: false|
   |group_id|integer|null: false, foreign_key: true|
   |user_id|integer|null: false, foreign_key: true|
-  |image_id|integer|foreign_key: true|
+  |image|varchar||
   |timestamp|datetime|null: false|
 
   ### Association
   - belongs_to :group
   - belongs_to :user
-  - mas_many :images

@@ -4,7 +4,6 @@
 ## usersテーブル
   |Column|Type|Options|
   |------|----|-------|
-  |user_id|integer|null: false, unique: true|
   |user_name|varchar|null: false|
   |email_address|varchar|null: false,unique: true|
   |password|varchar|null: false|
@@ -17,7 +16,6 @@
 ## groupsテーブル
   |Column|Type|Options|
   |------|----|-------|
-  |group_id|integer|null: false, unique: true|
   |group_name|varchar|null: false|
 
   ### Association
@@ -38,7 +36,6 @@
 ## massagesテーブル
   |Column|Type|Options|
   |------|----|-------|
-  |massage_id|integer|null: false, unique: true|
   |body|text|null: false|
   |group_id|integer|null: false, foreign_key: true|
   |user_id|integer|null: false, foreign_key: true|

@@ -4,9 +4,9 @@
 ## usersテーブル
   |Column|Type|Options|
   |------|----|-------|
-  |name|varchar|null: false|
-  |email_address|varchar|null: false,unique: true|
-  |password|varchar|null: false|
+  |name|string|null: false|
+  |email_address|string|null: false,unique: true|
+  |password|string|null: false|
 
   ### Association
   - has_many :groups_users
@@ -16,7 +16,7 @@
 ## groupsテーブル
   |Column|Type|Options|
   |------|----|-------|
-  |name|varchar|null: false|
+  |name|string|null: false|
 
   ### Association
   - has_many :groups_users
@@ -39,7 +39,7 @@
   |body|text|null: false|
   |group_id|integer|null: false, foreign_key: true|
   |user_id|integer|null: false, foreign_key: true|
-  |image|varchar||
+  |image|midiumblob||
   |timestamp|datetime|null: false|
 
   ### Association

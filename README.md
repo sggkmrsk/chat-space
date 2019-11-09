@@ -4,19 +4,19 @@
 ## usersテーブル
   |Column|Type|Options|
   |------|----|-------|
-  |user_name|varchar|null: false|
+  |name|varchar|null: false|
   |email_address|varchar|null: false,unique: true|
   |password|varchar|null: false|
 
   ### Association
   - has_many :groups_users
-    - has_many :group, though: :groups_users
+    - has_many :groups, though: :groups_users
   - has_many :massages
 
 ## groupsテーブル
   |Column|Type|Options|
   |------|----|-------|
-  |group_name|varchar|null: false|
+  |name|varchar|null: false|
 
   ### Association
   - has_many :groups_users

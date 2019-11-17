@@ -1,6 +1,6 @@
 html{
-  min-height: 100vh;
-  min-width: 100vw;
+  height: 100vh;
+  width: 100vw;
 }
 .wrapper{
   display:flex;
@@ -11,14 +11,13 @@ html{
   position:fixed;
   .side_header{
     height:100px;
-    width:300px;
     background-color: #253141;
     display: flex;
-    position:fixed;
-    left:0;
+    justify-content: space-between;
+    padding:0 20px;
     &__name{
+      margin-right: auto;
       display:inline-block;
-      padding-left: 20px;
       line-height: 100px;
       color:#fff;
       font-size: 16px;
@@ -31,23 +30,21 @@ html{
       line-height: 100px;
       font-size: 14px;
       &--edit{
-        margin-left: auto;
         padding-right:5px;
       }
       &--cog{
-        padding-right:20px;
       }
     }
   }
   .groups{
-    padding-top:100px;
-    height:calc(100vh - 100px);
+    height:calc(100vh - 100px); //謎のheight -100px
     background-color: #2f3e51;
     overflow: auto;
     &__group{
       padding:20px;
       height:45px;
       display:block;
+      cursor: pointer;
       &--name{
         padding-bottom:5px;
         font-size: 15px;
@@ -65,18 +62,20 @@ html{
 }
 .main_chat {
   margin-left:300px;
-  padding:0;
+  width: calc(100vw - 300px);
   .main_header{
     padding:0 40px;
-    height:100px;
-    display:flex;
+    height:99px;
+    background-color: #fff;
     border-bottom: 1px solid #eeeeee;
+    display:flex;
     justify-content: space-between;
     position:fixed;
     left:300px;
     right: 0;
-    z-index: 100;
+    z-index: 0;
     &__left-box{
+      margin-right: auto;
       &--groupname{
         padding:35px 0 15px 0;
         font-size: 20px;
@@ -89,88 +88,81 @@ html{
     }
     &__edit_btn{
       margin-top:30px;
-      margin-left: auto;
       height: 38px;
       line-height: 40px;
-      padding:0 20px 0 20px;
+      text-decoration: none;
+      padding:0 20px;
       border:1px solid #38aef0;
-      color:#38aef0
+      color:#38aef0;
+      float:right;
     }
   }
   .messages {
-    position:fixed;
-    top:100px;
-    left:300px;
-    right:0;
-    padding:0 40px;
-    height: calc(100vh - 100px - 90px);
-    background-color: #fff;
-    overflow: auto;
+    margin:100px 0 90px 0px;
+    padding:46px 40px;
+    height:100vh;                   //heightがないとbgcが切れるがsidebarと違って-100pxしなくていい理由がわからない。
+    background-color: #fafafa;
+    overflow:auto;
     &__message{
-      padding:46px 0 0 0px;
+      padding-bottom:46px;
       height:65px;
-      &__upper-info{
-        padding-bottom:10px;
+      &--name{
         display:inline-block;
-        &--name{
-          font-size: 16px;
-          font-weight: bold;
-          color:#434A54;
-        }
-        &--date{
-          padding-left:10px;
-          font-size: 12px;
-          color:#999999;
-        }
-      }
-      &__text{
-        font-size: 14px;
+        font-size: 16px;
+        font-weight: bold;
         color:#434A54;
+        padding-bottom:10px;
+      }
+      &--date{
+        display:inline-block;
+        padding-left:10px;
+        font-size: 12px;
+        color:#999999;
+      }
+      &--text{
+      display:block;
+      font-size: 14px;
+      color:#434A54;
       }
     }
   }
   .form{
-    position:fixed;
-    margin-top:auto;
-    height:90px;
+    padding:20px 40px;
     background-color: #ddd;
+    position:fixed;
     bottom:0;
-    left:300px;
     right:0;
+    left:300px;
+    z-index: 0;
     &__new_message{
+      display: inline-block;
       height:50px;
-      padding:20px 40px;
-      &__input_box{
-        display:flex;
-        justify-content: space-between;
-        &--text{
-          margin-right: 10px;
-          width:calc(100vw - 300px - 80px - 60px - 15px);
-          display: inline-block;
-          height:46px;
-          position: relative;
-        }
-        &--img{
-          display: inline-block;
-          font-size: 24px;
-          line-height: 50px;
-          left:calc(100vw - 490px);
-          position: absolute;
-          cursor: pointer;
-          &--none{
-            display: none;
-          }
-          }
-        &__send_btn{
-          margin-left:auto;
-          display:inline-block;
-          height:48px;
-          padding:0 30px;
-          font-size:16px;
-          background-color: #38aef0;
-          color:#fff;
-          cursor: pointer;
-        }
+      display:flex;
+      justify-content: space-between;
+      &--text{
+        padding-right:50px;//アイコンの下に文字が潜ってしまうため
+        text-indent:8px;
+        border:none;
+        width:100vw;
+        position: relative;
+      }
+      &--img{
+        font-size: 22px;
+        line-height: 50px;
+        left:calc(100vw - 490px) ;
+        cursor: pointer;
+        position: absolute;
+      }
+      &--none{
+        display:none;
+      }
+      &--send_btn{
+        margin-left:15px;
+        padding:0 30px;
+        font-size:16px;
+        background-color: #38aef0;
+        color:#fff;
+        cursor: pointer;
       }
     }
   }

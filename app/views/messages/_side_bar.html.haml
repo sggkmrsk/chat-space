@@ -1,7 +1,13 @@
-.header
-  .header__content
-    name
-    edit__btn
-    setteing__btn
-.contents
-  contents
+<!DOCTYPE html>
+.side_bar
+  .side_header
+    =link_to "#", class: "side_header__name" do
+      %div name
+    =link_to "#", class: "side_header__btn side_header__btn--edit" do
+      = icon('far', 'edit')
+    =link_to "#", class: "side_header__btn side_header__btn--cog" do
+      %i.fa.fa-cog.fa-fw
+  .groups
+    .groups__group
+      .groups__group--name  name
+      .groups__group--latest_message aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa

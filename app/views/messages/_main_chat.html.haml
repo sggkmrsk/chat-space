@@ -1,11 +1,23 @@
-.header
-  header
-.content
-  content
-.footer
-  .footer__testbox
-    textbox
-    .textbox__img-btn
-      img-btn
-  .footer__send-btn
-    send-btn
+<!DOCTYPE html>
+.main_chat
+  .main_header
+    .main_header__left-box
+      .main_header__left-box--groupname groupname
+      .main_header__left-box--member Member : name
+    .main_header__edit_btn Edit
+
+  .messages
+    .messages__message
+      .messages__message__upper-info
+        %i.messages__message__upper-info--name name
+        %i.messages__message__upper-info--date date
+      .messages__message__text aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+
+  %form{:action => "/", :method => "post", :class => "form"}
+    .form__new_message
+      .form__new_message__input_box
+        %input{:name => "text", :placeholder => " type a message", :type => "text", :value => "",:class => "form__new_message__input_box form__new_message__input_box--text"}/
+        %label{class:"form__new_message__input_box--img"}
+          = icon('fas', 'image')
+          %input{type: "file",class:"form__new_message__input_box--img--none"}
+        %input{:type => "submit", :value => "Send", :class => "form__new_message__input_box form__new_message__input_box__send_btn"}

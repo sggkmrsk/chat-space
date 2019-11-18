@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+.main_chat
+  .main_header
+    .main_header__left-box
+      .main_header__left-box--groupname groupname
+      .main_header__left-box--member Member : name
+    =link_to 'Edit','#', class:"main_header__edit_btn"
+
+  .messages
+    .messages__message
+      %i.messages__message--name name
+      %i.messages__message--date date
+      %i.messages__message--text message
+
+  %form{:action => "/", :method => "post", :class => "form"}
+    .form__new_message
+      %input{:name => "text", :placeholder => "type a message", :type => "text", :value => "",:class => "form__new_message form__new_message--text"}
+      %label{class:"form__new_message--img"}
+        = icon('fas', 'image')
+        %span<>
+        %input{type: "file",class:"form__new_message--none"}
+      %input{:type => "submit", :value => "Send", :class => "form__new_message form__new_message--send_btn"}

@@ -57,3 +57,5 @@ gem 'haml-rails'
 
 #gem for using 'font-awesome-sass' in rails
 gem 'font-awesome-sass'
+
+gem 'devise'

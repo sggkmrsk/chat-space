@@ -12,11 +12,11 @@
       %i.messages__message--date date
       %i.messages__message--text message
 
-  %form{:action => "/", :method => "post", :class => "form"}
+  %form{action: "/", method: "post", class: "form"}
     .form__new_message
-      %input{:name => "text", :placeholder => "type a message", :type => "text", :value => "",:class => "form__new_message form__new_message--text"}
+      %input{name: "text", placeholder: "type a message", type: "text", value: "",class: "form__new_message form__new_message--text"}
       %label{class:"form__new_message--img"}
         = icon('fas', 'image')
         %span<>
         %input{type: "file",class:"form__new_message--none"}
-      %input{:type => "submit", :value => "Send", :class => "form__new_message form__new_message--send_btn"}
+      %input{type: "submit", value: "Send", class: "form__new_message form__new_message--send_btn"}

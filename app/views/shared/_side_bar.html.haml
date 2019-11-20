@@ -8,6 +8,10 @@
     =link_to edit_user_path(current_user), class: "side_header__btn side_header__btn--cog" do
       = icon('fa', 'cog')
   .groups
-    .groups__group
-      .groups__group--name  name
-      .groups__group--latest_message latest_message
+    - current_user.groups.each do |group|
+      .groups__group
+        = link_to '#' do
+          .groups__group--name
+            = group.name
+          .groups__group--latest_message
+            メッセージはまだありません。

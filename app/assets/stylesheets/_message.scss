@@ -37,7 +37,7 @@ html{
     }
   }
   .groups{
-    height:calc(100vh - 100px);
+    height:100vh;
     background-color: #2f3e51;
     overflow: auto;
     &__group{
@@ -58,10 +58,15 @@ html{
         color:#fff;
       }
     }
+    &__group:last-of-type{
+      margin-bottom:20px;
+    }
   }
 }
 .main_chat {
+  background-color: #fafafa;
   margin-left:300px;
+  height:100vh;
   width: calc(100vw - 300px);
   .main_header{
     padding:0 40px;
@@ -98,9 +103,8 @@ html{
     }
   }
   .messages {
-    padding:100px 40px 90px;
-    height:calc(100vh - 236px);
     background-color: #fafafa;
+    padding:100px 40px 90px;
     &__message{
       padding-top:46px;
       height:65px;
@@ -134,17 +138,16 @@ html{
     bottom:0;
     right:0;
     left:300px;
-    z-index: 0;
+    z-index: 1;
     &__new_message{
       display: inline-block;
       height:50px;
       display:flex;
-      justify-content: space-between;
       &--text{
         padding-right:45px;
         text-indent:8px;
         border:none;
-        width:100vw;
+        width:calc(100vw - 300px - 80px - 60px - 42px - 45px - 15px);
         position: relative;
       }
       &--img{

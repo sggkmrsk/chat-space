@@ -1,22 +1,22 @@
-<!DOCTYPE html>
 .main_chat
   .main_header
     .main_header__left-box
-      .main_header__left-box--groupname groupname
-      .main_header__left-box--member Member : name
-    =link_to 'Edit','#', class:"main_header__edit_btn"
+      .main_header__left-box--groupname
+        = @group.name
+      .main_header__left-box--member
+        Member:
+        - @group.group_users.each do |group_user|
+          = group_user.user.name
+    =link_to 'Edit',edit_group_path(@group.id), class:"main_header__edit_btn"
 
   .messages
-    .messages__message
-      %i.messages__message--name name
-      %i.messages__message--date date
-      %i.messages__message--text message
+    = render @messages
 
-  %form{action: "/", method: "post", class: "form"}
-    .form__new_message
-      %input{name: "text", placeholder: "type a message", type: "text", value: "",class: "form__new_message form__new_message--text"}
-      %label{class:"form__new_message--img"}
-        = icon('fas', 'image')
-        %span<>
-        %input{type: "file",class:"form__new_message--none"}
-      %input{type: "submit", value: "Send", class: "form__new_message form__new_message--send_btn"}
+  .form
+    = form_for [@group,@message] do |f|
+      .form__new_message
+        = f.text_field :body, class: 'form__new_message form__new_message--text', placeholder: 'type a message'
+        = f.label :image, class: 'form__new_message--img' do
+          = icon('fas', 'image')
+          = f.file_field :image, class: 'form__new_message--none'
+        = f.submit 'Send', class: 'form__new_message--send_btn'

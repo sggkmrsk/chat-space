@@ -37,7 +37,7 @@
   .groups{
     min-height:calc(100vh - 100px);
     height:auto;
-    height:100vh;
+    height:calc(100vh - 100px);
     background-color: #2f3e51;
     overflow: auto;
     &__group{

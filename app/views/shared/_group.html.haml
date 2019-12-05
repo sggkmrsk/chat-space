@@ -1,0 +1,6 @@
+- current_user.groups.each do |group|
+  = link_to group_messages_path(group.id), class: "groups__group" do
+    .groups__group--name
+      = group.name
+    .groups__group--latest_message
+      = group.show_last_message

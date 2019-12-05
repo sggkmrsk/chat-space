@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 .side_bar
   .side_header
     .side_header__name 
@@ -8,9 +7,4 @@
     =link_to edit_user_path(current_user), class: "side_header__btn side_header__btn--cog" do
       = icon('fa', 'cog')
   .groups
-    - current_user.groups.each do |group|
-      = link_to group_messages_path(group.id), class: "groups__group" do
-        .groups__group--name
-          = group.name
-        .groups__group--latest_message
-          = group.show_last_message
+    = render 'shared/group'

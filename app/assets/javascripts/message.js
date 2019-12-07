@@ -1,4 +1,33 @@
 $(function(){
+  function buildHTML(message){
+    if (message.image) {
+      var html = `<div class="messages__message">
+                    <div class="messages__message--name">
+                      ${message.user_name}
+                    </div>
+                    <div class="messages__message--date">
+                      ${message.created_at}
+                    </div>
+                      <p class="messages__message--text">
+                        ${message.body}
+                      </p>
+                      <img class="messages__message--image" src="${message.image}" alt="">
+                    </div>`
+    } else {
+      var html = `<div class="messages__message">
+                    <div class="messages__message--name">
+                      ${message.user_name}
+                    </div>
+                    <div class="messages__message--date">
+                      ${message.created_at}
+                    </div>
+                    <p class="messages__message--text">
+                      ${message.body}
+                    </p>
+                    </div>`
+    }
+    return html;
+  }
   $(function(){
     $('#new_message').on('submit', function(e){
       e.preventDefault()
@@ -14,7 +43,7 @@ $(function(){
       })
       .done(function(){
       })
-      .fail(function() {
+      .fail(function(){
       });
     })
   })

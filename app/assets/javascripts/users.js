@@ -9,7 +9,7 @@ $(function() {
     $("#user-search-result").append(html);
   }
 
-  function not_found() {
+  function notFound() {
     var html = `
       <div class="chat-group-user clearfix">
         <p class="chat-group-user__name">ユーザーが見つかりません</p>
@@ -19,7 +19,7 @@ $(function() {
   }
   function replaceUser(userId,userName) {
     var html = `
-    <div class="chat-group-user clearfix" id="${userId}}">
+    <div class="chat-group-user clearfix" id="${userId}">
       <p class="chat-group-user__name">${userName}</p>
       <div class="user-search-remove chat-group-user__btn chat-group-user__btn--remove js-remove-btn" data-user-id="${userId}" data-user-name="${userName}">削除</div>
     </div>
@@ -27,7 +27,7 @@ $(function() {
     $(".js-add-user").append(html);
   }
   function addMember(userId) {
-    let html = `<input value="${userId}" name="group[user_ids][]" type="hidden" id="group_user_ids_${userId}" />`;
+    var html = `<input value="${userId}" name="group[user_ids][]" type="hidden" id="group_user_ids_${userId}" />`;
     $(`#${userId}`).append(html);
   }
   $("#user-search-field").on("keyup", function() {
@@ -48,7 +48,7 @@ $(function() {
         } else if (input.length == 0) {
           return false;
         } else {
-          not_found();
+          notFound();
         }
       })
       .fail(function() {

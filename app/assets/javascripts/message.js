@@ -1,7 +1,28 @@
 $(function(){
+  function reloadMessages() {
+    last_message_id = $('.messages__message:last').attr('data-message-id')
+    $.ajax({
+      url: "api/messages",
+      type: 'GET',
+      dataType: 'json',
+      data: {id: last_message_id}
+    })
+    .done(function(messages) {
+      var insertHTML = '';
+      $.each(messages, function(i, message) {
+        insertHTML += buildHTML(message)
+      });
+      $('.messages').append(insertHTML);
+      $('.main_chat').animate({scrollTop:$('.messages')[0].scrollHeight});
+    })
+    .fail(function() {
+      alert("自動更新の際にエラーが発生しました。\n情報を取得できませんでした。");
+    });
+  };
+
   function buildHTML(message){
     if (message.image) {
-      var html = `<div class="messages__message">
+      var html = `<div class="messages__message" data-message-id = ${message.id}>
                     <div class="messages__message--name">
                       ${message.user_name}
                     </div>
@@ -14,7 +35,7 @@ $(function(){
                       <img class="messages__message--image" src="${message.image}" alt="">
                     </div>`
     } else {
-      var html = `<div class="messages__message">
+      var html = `<div class="messages__message" data-message-id = ${message.id}>
                     <div class="messages__message--name">
                       ${message.user_name}
                     </div>
@@ -53,4 +74,9 @@ $(function(){
       });
     })
   })
+  $(window).bind("load", function(){
+    if(document.URL.match('/messages')) {
+    setInterval(reloadMessages, 7000);
+  };
+  });
 });

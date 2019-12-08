@@ -41,7 +41,7 @@ $(function(){
         processData: false,
         contentType: false
       })
-      .done(function(){
+      .done(function(message){
         var html = buildHTML(message);
         $('.messages').append(html);
         $('.main_chat').animate({scrollTop:$('.messages')[0].scrollHeight});

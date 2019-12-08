@@ -16,7 +16,7 @@ $(function(){
       $('.main_chat').animate({scrollTop:$('.messages')[0].scrollHeight});
     })
     .fail(function() {
-      console.log('error');
+      alert("自動更新の際にエラーが発生しました。\n情報を取得できませんでした。");
     });
   };
 

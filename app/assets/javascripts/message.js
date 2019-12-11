@@ -71,6 +71,7 @@ $(function(){
       })
       .fail(function(){
           alert("メッセージ送信に失敗しました");
+          $('.form__new_message--send_btn').attr('disabled', false);
       });
     })
   })

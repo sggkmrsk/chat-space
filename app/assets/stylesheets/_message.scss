@@ -1,7 +1,6 @@
 .wrapper{
   height: 100vh;
   width: 100vw;
-  position:fixed;
   display:flex;
   justify-content: space-between;
 }
@@ -35,11 +34,10 @@
     }
   }
   .groups{
-    min-height:calc(100vh - 100px);
-    height:auto;
+    box-sizing: border-box;
     height:calc(100vh - 100px);
     background-color: #2f3e51;
-    overflow: auto;
+    overflow: scroll;
     &__group{
       padding:20px;
       height:45px;
@@ -66,7 +64,6 @@
 .main_chat {
   background-color: #fafafa;
   width: calc(100vw - 300px);
-  overflow: auto;
   .main_header{
     padding:0 40px;
     height:99px;
@@ -74,10 +71,6 @@
     border-bottom: 1px solid #eeeeee;
     display:flex;
     justify-content: space-between;
-    position:fixed;
-    left:300px;
-    right: 0;
-    z-index: 0;
     &__left-box{
       margin-right: auto;
       &--groupname{
@@ -102,10 +95,13 @@
     }
   }
   .messages {
+    box-sizing: border-box;
+    height: calc(100vh - 190px);
     background-color: #fafafa;
-    padding:100px 40px 90px;
+    padding:46px 40px;
+    overflow: scroll;
     &__message{
-      padding-top:46px;
+      padding-bottom:46px;
       min-height:65px;
       &--name{
         display:inline-block;
@@ -131,17 +127,12 @@
       }
     }
     &__message:last-of-type{
-      padding-bottom:46px;
+      padding-bottom:0;
     }
   }
   .form{
     padding:20px 40px;
     background-color: #ddd;
-    position:fixed;
-    bottom:0;
-    right:0;
-    left:300px;
-    z-index: 1;
     &__new_message{
       display: inline-block;
       height:50px;
@@ -156,7 +147,7 @@
       &--img{
         font-size: 22px;
         line-height: 50px;
-        left:calc(100vw - 490px) ;
+        right:175px;
         cursor: pointer;
         position: absolute;
       }

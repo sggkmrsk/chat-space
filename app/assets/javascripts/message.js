@@ -13,7 +13,7 @@ $(function(){
         insertHTML += buildHTML(message)
       });
       $('.messages').append(insertHTML);
-      $('.main_chat').animate({scrollTop:$('.messages')[0].scrollHeight});
+      $('.messages').animate({scrollTop:$('.messages')[0].scrollHeight});
     })
     .fail(function() {
       alert("自動更新の際にエラーが発生しました。\n情報を取得できませんでした。");

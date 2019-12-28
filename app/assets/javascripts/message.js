@@ -67,11 +67,12 @@ $(function(){
         $('.messages').append(html);
         $('.messages').animate({scrollTop:$('.messages')[0].scrollHeight});
         $('.new_message')[0].reset();
-        $('.form__new_message--send_btn').attr('disabled', false)
       })
       .fail(function(){
-          alert("メッセージ送信に失敗しました");
-          $('.form__new_message--send_btn').attr('disabled', false);
+        alert("メッセージ送信に失敗しました");
+      })
+      .always(function(){
+        $('.form__new_message--send_btn').attr('disabled', false);
       });
     })
   })

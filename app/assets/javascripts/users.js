@@ -17,6 +17,7 @@ $(function() {
     `;
     $("#user-search-result").append(html);
   }
+
   function replaceUser(userId,userName) {
     var html = `
     <div class="chat-group-user clearfix" id="${userId}">
@@ -26,10 +27,12 @@ $(function() {
     `;
     $(".js-add-user").append(html);
   }
+
   function addMember(userId) {
     var html = `<input value="${userId}" name="group[user_ids][]" type="hidden" id="group_user_ids_${userId}" />`;
     $(`#${userId}`).append(html);
   }
+
   $("#user-search-field").on("keyup", function() {
     var input = $("#user-search-field").val();
     $.ajax({
@@ -38,23 +41,23 @@ $(function() {
       data: { keyword: input },
       dataType: "json"
     })
-      .done(function(users) {
-        $("#user-search-result").empty();
-
-        if (users.length !== 0) {
-          users.forEach(function(user) {
-            found(user);
-          });
-        } else if (input.length == 0) {
-          return false;
-        } else {
-          notFound();
-        }
-      })
-      .fail(function() {
-        alert("通信エラーです。ユーザーが表示できません。");
-      });
+    .done(function(users) {
+      $("#user-search-result").empty();
+      if (users.length !== 0) {
+        users.forEach(function(user) {
+          found(user);
+        });
+      } else if (input.length == 0) {
+        return false;
+      } else {
+        notFound();
+      }
+    })
+    .fail(function() {
+      alert("通信エラーです。ユーザーが表示できません。");
+    });
   });
+
   $(document).on("click", ".chat-group-user__btn--add", function() {
     const userName = $(this).attr("data-user-name");
     const userId = $(this).attr("data-user-id");
@@ -64,6 +67,7 @@ $(function() {
     replaceUser(userId,userName);
     addMember(userId);
   });
+
   $(document).on("click", ".chat-group-user__btn--remove", function() {
     $(this)
       .parent()
